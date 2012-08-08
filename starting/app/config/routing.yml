@@ -1,0 +1,13 @@
+EventBundle:
+    resource: "@EventBundle/Resources/config/routing.yml"
+    prefix:   /
+
+UserBundle:
+    resource: "@UserBundle/Controller"
+    prefix:   /
+    type:     annotation
+
+# Internal routing configuration to handle ESI
+#_internal:
+#   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#   prefix:   /_internal

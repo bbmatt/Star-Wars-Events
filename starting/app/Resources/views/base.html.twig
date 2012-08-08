@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>
+            {%- if block('title') -%}
+                {{ block('title') }} | Starwars Events
+            {%- else -%}
+                Events from a Galaxy, far far away
+            {%- endif -%}
+        </title>
+
+        <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
+
+        {% block stylesheets %}
+            {% stylesheets
+              'bundles/event/css/*'
+              filter='cssrewrite'
+            %}
+                <link rel="stylesheet" href="{{ asset_url }}">
+            {% endstylesheets %}
+        {% endblock %}
+
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% if app.session.hasFlash('success') %}
+            <div class="alert-message success">
+                {{ app.session.getFlash('success') }}
+            </div>
+        {% endif %}
+
+        {% block body %}{% endblock %}
+        {% block javascripts %}
+            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+            <script type="text/javascript" src="{{ asset('bundles/event/js/jquery.blockUI.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>
